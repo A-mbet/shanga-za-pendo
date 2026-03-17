@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Shanga By Pendo</title>
+</head>
+<body>
+    <section class="products-page">
+    <h2>Our Products</h2>
+    <p class="intro-text">Discover handmade Maasai-inspired hair bands and hair pins, crafted with love and tradition.</p>
+
+    <div class="product-grid">
+    <!-- Product 1 -->
+    <div class="product-card">
+        <img src="images/WhatsApp Image 2026-03-17 at 00.46.26 (2).jpeg" alt="Maasai Hair Band">
+        <h3>Maasai Hair Band</h3>
+        <p>Hand-beaded with vibrant colors, perfect for bold looks.</p>
+        <p class="price">KES 300</p>
+        <button onclick="orderWhatsApp('Maasai Hair Band', 'KES 300', 'images/WhatsApp Image 2026-03-17 at 00.46.26 (2).jpeg')">Order via WhatsApp</button>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card">
+        <img src="images/WhatsApp Image 2026-03-17 at 00.46.26 (3).jpeg" alt="Maasai Hair Pin">
+        <h3>Maasai Hair Pin</h3>
+        <p>Elegant beadwork to add cultural flair to any hairstyle.</p>
+        <p class="price">KES 300</p>
+        <button onclick="orderWhatsApp('Maasai Hair Pin', 'KES 300', 'images/WhatsApp Image 2026-03-17 at 00.46.26 (3).jpeg')">Order via WhatsApp</button>
+
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card">
+        <img src="images/WhatsApp Image 2026-03-17 at 00.46.26.jpeg" alt="Maasai Hair Pin">
+        <h3>Deluxe Hair Pin</h3>
+        <p>Enhanced beadwork for a more elaborate look.</p>
+        <p class="price">KES 300</p>
+        <button onclick="orderWhatsApp('Deluxe Hair Pin', 'KES 300', 'images/WhatsApp Image 2026-03-17 at 00.46.26.jpeg')">Order via WhatsApp</button>
+    </div>
+
+    <!-- Product 4 -->
+    <div class="product-card">
+        <img src="images/WhatsApp Image 2026-03-17 at 00.46.26 (1).jpeg" alt="Maasai Hair Band">
+        <h3>Maasai Hair Band</h3>
+        <p>Hand-beaded with vibrant colors, perfect for bold looks.</p>
+        <p class="price">KES 300</p>
+        <button onclick="orderWhatsApp('Maasai Hair Band', 'KES 300', 'images/WhatsApp Image 2026-03-17 at 00.46.26 (1).jpeg')">Order via WhatsApp</button>
+    </div>
+
+    <!-- Product 5 -->
+    <div class="product-card">
+        <img src="images/WhatsApp Image 2026-03-17 at 00.46.25.jpeg" alt="Maasai Hair Pin">
+        <h3>Maasai Hair Pin</h3>
+        <p>Elegant beadwork to add cultural flair to any hairstyle.</p>
+        <p class="price">KES 300</p>
+        <button onclick="orderWhatsApp('Maasai Hair Pin', 'KES 300', 'images/WhatsApp Image 2026-03-17 at 00.46.25.jpeg')">Order via WhatsApp</button>
+    </div>
+
+    <!-- Product 6 -->
+    <div class="product-card">
+        <img src="images/WhatsApp Image 2026-03-17 at 00.46.25 (1).jpeg" alt="Maasai Hair Pin">
+        <h3>Deluxe Hair Pin</h3>
+        <p>Enhanced beadwork for a more elaborate look.</p>
+        <p class="price">KES 300</p>
+        <button onclick="orderWhatsApp('Deluxe Hair Pin', 'KES 300', 'images/WhatsApp Image 2026-03-17 at 00.46.25 (1).jpeg')">Order via WhatsApp</button>
+
+    </div>
+    
+    <script>
+    function orderWhatsApp(productName, price, imageUrl) {
+    // Replace with your sister’s WhatsApp number (country code + number, no + or spaces)
+    const phoneNumber = "254796722480"; 
+    const message = `Hello Shanga Za Pendo! I would like to order the ${productName} priced at ${price}.\nImage: ${imageUrl}`;
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+    }
+</script>
+    </div>
+</section>
+    <style>
+        .products-page {
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .products-page h2 {
+            text-align: center;
+            color: #d62828;
+            font-size: 2.5em;
+        }
+        .intro-text {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        .product-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,.08);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        .product-card img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+        .product-card h3 {
+            margin-top: 15px;
+            color: #003049;
+        }
+        .product-card p {
+            margin-top: 10px;
+            font-size: 1em;
+        }
+        .price {
+            font-weight: bold;
+            color: #d62828;
+            margin-top: 15px;
+        }
+        .product-card button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #d62828;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform .2s ease, background-color .2s ease;
+        }
+
+        .product-card button:hover {
+            background-color: #b31f1f;
+            transform: translateY(-2px);
+        }
+
+        .order-section {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #f8f4ed 0%, #feeacf 100%);
+            border-radius: 12px;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+
+        .order-section h2 {
+            color: #003049;
+            margin-bottom: 10px;
+        }
+
+        .order-section p {
+            color: #333;
+            margin-bottom: 22px;
+            font-size: 1.1em;
+        }
+
+        .order-section button {
+            padding: 14px 28px;
+            font-size: 1.05em;
+            background-color: #003049;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 6px 14px rgba(0,0,0,.2);
+            transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+        }
+
+        .order-section button:hover {
+            background-color: #0b4e77;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(0,0,0,.25);
+        }
+    </style>
+
+    <section class="order-section">
+        <h2>Ready to Order?</h2>
+        <p>Contact us via WhatsApp to place your order and bring a touch of Maasai elegance to your style!</p>
+        <button onclick="orderWhatsApp('General Inquiry', 'I would like to place an order.')">Order via WhatsApp</button>
+    </section>
+</body>
+</html>
