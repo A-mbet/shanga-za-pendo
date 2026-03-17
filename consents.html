@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consents</title>
+</head>
+<body>
+
+    <h2>Customer Consent Form</h2>
+    <p>By placing an order with Shanga Za Pendo, you consent to the collection and use of your personal information (such as name and WhatsApp contact) for the purpose of fulfilling your order and communicating with you.</p>
+    <p>You may withdraw your consent at any time by contacting us directly.</p>
+
+    <h2>Privacy Policy</h2>
+    <p>We respect your privacy. Information collected (such as your name, WhatsApp number, and delivery details) is used only to process orders and improve customer service.</p>
+    <p>We do not sell or share your information with third parties, except when required by law.</p>
+
+    <h2>Terms of Use</h2>
+    <p>By using this website, you agree to the following terms:</p>
+    <ul>
+        <li>Products are handmade and may vary slightly in color or design.</li>
+        <li>Payments must be completed before delivery.</li>
+        <li>We reserve the right to update these terms at any time.</li>
+    </ul>
+
+    <form action="submit_order.php" method="post">
+    <!-- Customer details -->
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="customer_name" required>
+
+    <label for="whatsapp">WhatsApp Number:</label>
+    <input type="text" id="whatsapp" name="customer_whatsapp" required>
+
+    <!-- Agreement checkbox -->
+    <div>
+    <input type="checkbox" id="agree" name="agree" required>
+    <label for="agree">
+        I agree to the 
+        <a href="privacy.html" target="_blank">Privacy Policy</a>, 
+        <a href="terms.html" target="_blank">Terms of Use</a>, 
+        <a href="consent.html" target="_blank">Consent Form</a>.
+    </label>
+    </div>
+
+    <button type="submit">Place Order</button>
+</form>
+</body>
+</html>
