@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Products - Shanga By Pendo</title>
+    <!-- page specific css -->
+    <link rel="stylesheet" href="css/products.css">
+
 </head>
 <body>
     <section class="products-page">
@@ -68,7 +71,6 @@
         <p>Enhanced beadwork for a more elaborate look.</p>
         <p class="price">KES 300</p>
         <button class="add-to-cart" data-name="Royal Deluxe Hair Pin" data-price="300" data-image="images/WhatsApp Image 2026-03-17 at 00.46.25 (1).jpeg">Add to Cart</button>
-
     </div>
 
     <section class="cart-section">
@@ -79,262 +81,14 @@
         <button id="checkoutBtn" class="checkout-btn">Checkout via WhatsApp</button>
     </section>
 
-    <script>
-    const cart = [];
-    const phoneNumber = '254796722480';
-
-    function addToCart(name, basePrice, imageUrl) {
-        const existing = cart.find(item => item.name === name && item.imageUrl === imageUrl);
-        if (existing) {
-            existing.quantity += 1;
-        } else {
-            cart.push({ name, basePrice, imageUrl, quantity: 1 });
-        }
-        renderCart();
-    }
-
-    function getUnitPrice() {
-        const totalQty = cart.reduce((sum, item) => sum + item.quantity, 0);
-        return totalQty > 1 ? 250 : null;
-    }
-
-    function renderCart() {
-        const cartItems = document.querySelector('#cart-items');
-        const cartQtyEl = document.querySelector('#cart-quantity');
-        const cartTotalEl = document.querySelector('#cart-total');
-
-        if (!cartItems) return;
-
-        const discountPrice = getUnitPrice();
-        let totalQty = 0;
-        let totalPrice = 0;
-
-        cartItems.innerHTML = '';
-        cart.forEach(item => {
-            totalQty += item.quantity;
-            const unitPrice = discountPrice !== null ? discountPrice : item.basePrice;
-            const subTotal = unitPrice * item.quantity;
-            totalPrice += subTotal;
-
-            const li = document.createElement('li');
-            li.textContent = `${item.name} x ${item.quantity} @ KES ${unitPrice} each = KES ${subTotal}`;
-            cartItems.appendChild(li);
-        });
-
-        cartQtyEl.textContent = `Total items: ${totalQty}`;
-        cartTotalEl.textContent = `Total price: KES ${totalPrice}`;
-    }
-
-    function removeFromCart(index) {
-        if (index >= 0 && index < cart.length) {
-            cart.splice(index, 1);
-            renderCart();
-        }
-    }
-
-    function checkoutCart() {
-        if (cart.length === 0) {
-            alert('Your cart is empty. Add items first.');
-            return;
-        }
-
-        const discountPrice = getUnitPrice();
-        let totalQty = 0;
-        let totalPrice = 0;
-        let lines = [];
-
-        cart.forEach(item => {
-            const unitPrice = discountPrice !== null ? discountPrice : item.basePrice;
-            const subTotal = unitPrice * item.quantity;
-            totalQty += item.quantity;
-            totalPrice += subTotal;
-            lines.push(`${item.name} x ${item.quantity} @ KES ${unitPrice} = KES ${subTotal}`);
-        });
-
-        const message = `Hello Shanga Za Pendo!\nI want to order ${totalQty} items (KES ${discountPrice !== null ? 250 : '300'} each).\n` +
-            lines.join('\n') +
-            `\nTotal: KES ${totalPrice}`;
-
-        const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-        window.open(url, '_blank');
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.add-to-cart').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const name = btn.getAttribute('data-name');
-                const price = Number(btn.getAttribute('data-price'));
-                const imageUrl = btn.getAttribute('data-image');
-                addToCart(name, price, imageUrl);
-            });
-        });
-
-        const checkoutBtn = document.querySelector('#checkoutBtn');
-        if (checkoutBtn) {
-            checkoutBtn.addEventListener('click', checkoutCart);
-        }
-
-        renderCart();
-    });
-</script>
-    </section>
-    <style>
-        .products-page {
-            padding: 40px;
-            max-width: 1200px;
-            margin: auto;
-        }
-        .products-page h2 {
-            text-align: center;
-            color: #d62828;
-            font-size: 2.5em;
-        }
-        .intro-text {
-            text-align: center;
-            font-size: 1.2em;
-            margin-bottom: 40px;
-        }
-        .product-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            justify-content: center;
-        }
-        .product-card {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,.08);
-            padding: 20px;
-            width: 300px;
-            text-align: center;
-        }
-        .product-card img {
-            max-width: 100%;
-            border-radius: 8px;
-        }
-        .product-card h3 {
-            margin-top: 15px;
-            color: #003049;
-        }
-        .product-card p {
-            margin-top: 10px;
-            font-size: 1em;
-        }
-        .price {
-            font-weight: bold;
-            color: #d62828;
-            margin-top: 15px;
-        }
-        .product-card button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #d62828;
-            color: #ffffff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: transform .2s ease, background-color .2s ease;
-        }
-
-        .product-card button:hover {
-            background-color: #b31f1f;
-            transform: translateY(-2px);
-        }
-
-        .cart-section {
-            margin: 30px auto;
-            max-width: 800px;
-            background: #fff7e6;
-            padding: 18px;
-            border: 1px solid #f4d4b4;
-            border-radius: 10px;
-        }
-
-        .cart-section h2 {
-            color: #003049;
-            margin-bottom: 12px;
-            text-align: center;
-        }
-
-        .cart-section ul {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 10px;
-        }
-
-        .cart-section li {
-            padding: 8px 8px;
-            border-bottom: 1px solid #e5d2b8;
-            color: #1f2933;
-        }
-
-        .cart-section p {
-            font-weight: 600;
-            color: #1f2933;
-            margin: 6px 0;
-        }
-
-        .checkout-btn {
-            display: block;
-            width: 100%;
-            padding: 12px 16px;
-            background-color: #003049;
-            color: #ffffff;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 700;
-            margin-top: 10px;
-        }
-
-        .checkout-btn:hover {
-            background-color: #0b4e77;
-            transform: translateY(-1px);
-        }
-
-        .order-section {
-            text-align: center;
-            padding: 40px;
-            background: linear-gradient(135deg, #f8f4ed 0%, #feeacf 100%);
-            border-radius: 12px;
-            margin: 40px auto;
-            max-width: 800px;
-        }
-
-        .order-section h2 {
-            color: #003049;
-            margin-bottom: 10px;
-        }
-
-        .order-section p {
-            color: #333;
-            margin-bottom: 22px;
-            font-size: 1.1em;
-        }
-
-        .order-section button {
-            padding: 14px 28px;
-            font-size: 1.05em;
-            background-color: #003049;
-            color: #fff;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: 0 6px 14px rgba(0,0,0,.2);
-            transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
-        }
-
-        .order-section button:hover {
-            background-color: #0b4e77;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 18px rgba(0,0,0,.25);
-        }
-    </style>
-
     <section class="order-section">
         <h2>Ready to Order?</h2>
         <p>Contact us via WhatsApp to place your order and bring a touch of Maasai elegance to your style!</p>
         <button onclick="checkoutCart()">Checkout Cart via WhatsApp</button>
     </section>
+
+    <!-- page specific js -->
+<script src="js/products.js"></script>
+
 </body>
 </html>
