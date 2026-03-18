@@ -78,20 +78,43 @@
         window.open(url, '_blank');
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        document.querySelectorAll('.add-to-cart').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const name = btn.getAttribute('data-name');
-                const price = Number(btn.getAttribute('data-price'));
-                const imageUrl = btn.getAttribute('data-image');
-                addToCart(name, price, imageUrl);
-            });
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const name = btn.getAttribute('data-name');
+            const price = Number(btn.getAttribute('data-price'));
+            const imageUrl = btn.getAttribute('data-image');
+            addToCart(name, price, imageUrl);
         });
+    });
 
-        const checkoutBtn = document.querySelector('#checkoutBtn');
-        if (checkoutBtn) {
-            checkoutBtn.addEventListener('click', checkoutCart);
-        }
+    // Cart checkout button
+    const checkoutBtn = document.querySelector('#checkoutBtn');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', (event) => {
+            const agreeBox = document.getElementById("agreeCart");
+            if (!agreeBox || !agreeBox.checked) {
+                alert("Please agree to the Privacy Policy and Terms of Use before checking out.");
+                event.preventDefault();
+                return;
+            }
+            checkoutCart();
+        });
+    }
 
-        renderCart();
-})
+    // Ready to Order button
+    const readyBtn = document.querySelector('.order-section button');
+    if (readyBtn) {
+        readyBtn.addEventListener('click', (event) => {
+            const agreeBox = document.getElementById("agreeCart");
+            if (!agreeBox || !agreeBox.checked) {
+                alert("Please agree to the Privacy Policy and Terms of Use before checking out.");
+                event.preventDefault();
+                return;
+            }
+            checkoutCart();
+        });
+    }
+
+    renderCart();
+});

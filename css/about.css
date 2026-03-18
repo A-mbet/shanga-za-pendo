@@ -71,3 +71,36 @@
                 line-height: 1.6;
                 color: #f8f8f8;
             }
+.nav-buttons {
+    position: fixed;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    gap: 10px;
+    z-index: 999;
+}
+
+.nav-btn {
+    padding: 8px 16px;
+    background-color: #003049; /* deep blue */
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0,0,0,.15);
+    transition: background-color .2s ease, transform .2s ease;
+}
+
+.nav-btn:hover {
+    background-color: #0b4e77; /* lighter blue on hover */
+    transform: translateY(-2px);
+}
+
+.nav-btn.primary {
+    background-color: #d62828; /* red for emphasis */
+}
+
+.nav-btn.primary:hover {
+    background-color: #b31f1f;
+}
